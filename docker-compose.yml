@@ -1,0 +1,52 @@
+version: '3.5'
+services:
+  django-maria:
+    image: mariadb:10.5
+    container_name: django-maria
+    hostname: django-maria
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./dbs/mariadb:/var/lib/mysql
+      - ./server/init/1.sql:/docker-entrypoint-initdb.d/1.sql
+      - ./server/init/2.sql:/docker-entrypoint-initdb.d/2.sql
+      #- ./50-server.cnf:/etc/mysql/mariadb.conf.d/50-server.cnf
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=12345678
+    networks:
+      - django
+
+  django-web:
+    build: ./server
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/server
+    ports:
+      - "8000:8000"
+    depends_on:
+      - django-maria
+    networks:
+      - django
+
+  django-pma:
+    image: phpmyadmin/phpmyadmin
+    container_name: django-pma
+    hostname: django-pma
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - 127.0.0.1:13001:80
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=django-maria
+      #- PMA_ABSOLUTE_URI=https://www.ai9.co.th/pma/
+    restart: always
+    links:
+      - django-maria
+    networks:
+      - django
+
+networks:
+  django:
+    external:
+      name: django

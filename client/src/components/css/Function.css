@@ -1,0 +1,20 @@
+.white {
+    background-color: #FFF;
+}
+
+section {
+    width: 100%;
+    padding: 2rem;
+    background-color: #FFF;
+    box-shadow: -3px 5px 8px 4px rgba(0, 0, 0, 0.1);
+  }
+.center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.center button{
+    height:50px;
+    width:200px;
+}
+  

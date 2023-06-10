@@ -1,0 +1,48 @@
+a{
+    color: blue;
+}
+
+nav{
+    background-color: #F0F3F4;
+    border: black;
+}
+
+.navbar-collapse ul li a:hover{
+    color: rgba(255, 99, 71, 0.8);
+    transition: .3s ease;
+}
+
+.navbar-brand:hover{
+    color: rgba(255, 99, 71, 0.8);
+    transition: .3s ease;
+}
+
+.nav-link:hover{
+    color: rgba(255, 99, 71, 0.8);
+    transition: .3s ease;
+}
+
+.navbar-toggle{
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid transparent;
+}
+.span{
+    background-color: #121212;
+
+}
+
+.nav-link{
+    border: none;
+}
+
+.login{
+    text-decoration: none;
+}
+
+.btn:hover{
+    color: rgba(255, 99, 71, 0.8);
+    transition: .3s ease;
+}
+
+

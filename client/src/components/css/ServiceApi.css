@@ -1,0 +1,16 @@
+xmp:before {
+    content: counter(line);
+    counter-increment: line;
+  }
+  
+  pre {
+    white-space: nowrap;
+    counter-reset: line;
+    min-height: 350px;
+    background: #ececec;
+    padding: 15px;
+    overflow-y: scroll
+  }
+  code *{
+    color: black;
+  }

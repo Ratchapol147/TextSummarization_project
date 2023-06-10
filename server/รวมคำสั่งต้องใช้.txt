@@ -1,0 +1,8 @@
+python manage.py migrate
+python manage.py makemigrations
+python manage.py createsuperuser
+
+ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+mysql -u root -p nectec_database < ./docker-entrypoint-initdb.d/1.sql
+
